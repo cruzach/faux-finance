@@ -8,7 +8,7 @@ class Portfolio extends React.Component {
         }
     }
     componentDidMount() {
-        fetch('http://localhost:3000/portfolio', {
+        fetch('https://git.heroku.com/rocky-everglades-18419.git/portfolio', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
