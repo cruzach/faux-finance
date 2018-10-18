@@ -19,7 +19,7 @@ const stockChart = ({chartLabels, chartData}) => {
     }
 
         return(
-            <div className="pa3 ma3">
+            <div className="pa3 ma3 w-50">
                 <LineChart data={data} width="600" height="250"/>
             </div>
         );
