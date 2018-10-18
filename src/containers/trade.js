@@ -16,7 +16,7 @@ class Trade extends React.Component {
       if(this.state.shareCount%1 !== 0){
         alert('ERROR: Shares purchased must be a whole number.')
       }else {
-        fetch('https://git.heroku.com/rocky-everglades-18419.git/trade', {
+        fetch('https://rocky-everglades-18419.herokuapp.com/trade', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
