@@ -64,7 +64,7 @@ class Portfolio extends React.Component {
                                         <td className="pv3 pr3 bb b--black-20">{filteredHoldings[i].companyName}</td>
                                         <td className="pv3 pr3 bb b--black-20">{filteredHoldings[i].symbol}</td>
                                         <td className="pv3 pr3 bb b--black-20">{filteredHoldings[i].shares}</td>
-                                        <td className="pv3 pr3 bb b--black-20">${filteredHoldings[i].averageCostPerShare}</td>
+                                        <td className="pv3 pr3 bb b--black-20">${(filteredHoldings[i].averageCostPerShare).toFixed(2)}</td>
                                         <td className={"pv3 pr3 bb b--black-20 "+(filteredHoldings[i].profit >= 0 ? 'green' : 'red')}>
                                             ${(filteredHoldings[i].currentCostPerShare).toFixed(2)}
                                         </td>
