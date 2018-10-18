@@ -2,7 +2,7 @@ import React from 'react';
 
 const stockCard = ({companyName,symbol,sector,latestPrice,changePercent}) => {
     return(
-        <div className="bg-washed-blue shadow-5 tc grow dib pa3 ma2 br3">
+        <div className="bg-washed-blue shadow-5 tc grow pa3 ma2 br3">
             <h3>{companyName}</h3>
             <p>Symbol: {symbol} </p>
             <p>Sector: {sector}</p>

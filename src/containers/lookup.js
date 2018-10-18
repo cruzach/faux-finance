@@ -37,7 +37,7 @@ class LookUp extends React.Component {
            <SearchBox searchChange={this.onSearchChange}/>
            <div className='flex center'>
            <StockList companies={results.quote}/>
-           <StockChart chartLabels={chartLabels} chartData={chartData} />
+           <StockChart className="w-80 w-40-ns" chartLabels={chartLabels} chartData={chartData} />
            </div>
            <div>
                <p><strong>Related Recent News: </strong><a href={results.news[0].url}>{results.news[0].headline}</a></p>
