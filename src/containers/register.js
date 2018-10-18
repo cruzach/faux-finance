@@ -25,7 +25,7 @@ class Register extends React.Component {
         if(this.state.name.length === 0 || this.state.name.signInEmail === 0 || this.state.signInPassword.length === 0){
             return alert('All input data is required.');
         }
-        fetch('https://git.heroku.com/rocky-everglades-18419.git/register', {
+        fetch('https://rocky-everglades-18419.herokuapp.com/', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
