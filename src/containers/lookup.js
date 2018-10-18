@@ -16,7 +16,6 @@ class LookUp extends React.Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({results:data});
-                console.log(this.state.results.news[0])
             })
             .catch(err=> this.setState({results:''}))
             event.target.value = '';
