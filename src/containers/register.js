@@ -27,8 +27,7 @@ class Register extends React.Component {
         }
         fetch('https://git.heroku.com/rocky-everglades-18419.git/register', {
             method: 'post',
-            headers: {'Access-Control-Allow-Headers':'*','Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 
-            'Access-Control-Allow-Methods': '*'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 name: this.state.name,
                 email: this.state.signInEmail,
