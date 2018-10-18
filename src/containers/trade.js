@@ -71,7 +71,7 @@ class Trade extends React.Component {
     render(){
         const { results, shareCount, searchResult} = this.state;
         return(
-            <div className='flex flex-column pa5 tc br3 ba b--black-10 shadow-5 w-30 mw8 center pt3 pb4'>
+            <div className='flex flex-column pa5 tc br3 ba b--black-10 shadow-5 w-80 w-30-m mw8 center pt3 pb4'>
             <p className="f2 fw6 ph0 mh0">Trade</p>
                 <div className='flex flex-row center'>
                     <label htmlFor='symbol' className="pa1 mt3 mr2" >Symbol: </label> 
