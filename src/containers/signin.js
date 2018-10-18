@@ -20,7 +20,7 @@ class Signin extends React.Component {
     onSubmitSignin = () => {
         fetch('https://git.heroku.com/rocky-everglades-18419.git/signin', {
             method: 'post',
-            headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 
+            headers: {'Access-Control-Allow-Headers':'*','Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 
             'Access-Control-Allow-Methods': '*'},
             body: JSON.stringify({
                 email: this.state.signInEmail,

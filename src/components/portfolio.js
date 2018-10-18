@@ -10,7 +10,8 @@ class Portfolio extends React.Component {
     componentDidMount() {
         fetch('https://git.heroku.com/rocky-everglades-18419.git/portfolio', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Access-Control-Allow-Headers':'*','Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 
+            'Access-Control-Allow-Methods': '*'},
             body: JSON.stringify({
                 id: this.props.user.id
             })
