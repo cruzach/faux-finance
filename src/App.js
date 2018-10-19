@@ -18,12 +18,10 @@ const initialState = {
         name: '',
         email: '',
         cash: 0,
-        joined: ''
       }
     }
 
 class App extends Component {
-  
   constructor() {
     super();
     this.state = initialState;
@@ -55,54 +53,58 @@ class App extends Component {
               case 'home':
                 return(
                   <div className="App">
-                  <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                  <GettingStarted />
+                    <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+                    <Logo />
+                    <GettingStarted />
                   </div>
                 );
               case 'signin':
                 return(
-                <div className="App">
-                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-                </div>
+                  <div className="App">
+                    <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+                    <Logo />
+                    <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+                  </div>
                 );
               case 'register':
                 return(
-                <div className="App">
-                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-                </div>);
+                  <div className="App">
+                    <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+                    <Logo />
+                    <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+                  </div>
+                );
               default:
                   return(<p>loading...</p>);
       }
     } else {
       switch(page){
-                case 'portfolio':
-                  return(
-                  <div className="App">
-                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                  <Portfolio user={user}/>
-                  </div>);
-                case 'lookup':
-                  return(
-                  <div className="App">
-                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                  <Lookup />
-                  </div>);
-                case 'trade':
-                  return(
-                  <div className="App">
-                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-                  <Logo />
-                  <Trade user={user} onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-                  </div>);
-                default:
-                  return(<p>loading...</p>);
+        case 'portfolio':
+          return(
+            <div className="App">
+              <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+              <Logo />
+              <Portfolio user={user}/>
+            </div>
+          );
+        case 'lookup':
+          return(
+            <div className="App">
+              <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+              <Logo />
+              <Lookup />
+            </div>
+          );
+        case 'trade':
+          return(
+            <div className="App">
+              <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+              <Logo />
+              <Trade user={user} onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+            </div>
+          );
+        default:
+          return(<p>loading...</p>);
       }
     }
   }

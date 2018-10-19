@@ -11,12 +11,7 @@ return (
             onKeyPress={searchChange}
             />
         </div>
-
     );
-
-    
-
-    
 }
 
 export default SearchBox;

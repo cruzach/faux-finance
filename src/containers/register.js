@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Register extends React.Component {
     constructor() {
         super();
@@ -22,7 +21,7 @@ class Register extends React.Component {
     }
 
     onSubmitSignin = () => {
-        if(this.state.name.length === 0 || this.state.name.signInEmail === 0 || this.state.signInPassword.length === 0){
+        if(this.state.name.length === 0 || this.state.name.signInEmail.length === 0 || this.state.signInPassword.length === 0){
             return alert('All input data is required.');
         }
         fetch('https://rocky-everglades-18419.herokuapp.com/register', {
@@ -32,19 +31,19 @@ class Register extends React.Component {
                 name: this.state.name,
                 email: this.state.signInEmail,
                 password: this.state.signInPassword
-      })
-    })
+            })
+        })
             .then(response => response.json())
             .then(user => {
-        if (user) {
-            if(user === 'Unable to register.'){
-                alert('Incorrect register information.');
-            } else {
-            this.props.loadUser(user);
-            this.props.onRouteChange('portfolio','signin');
-            }
-        }
-      })
+                if (user) {
+                    if(user === 'Unable to register.'){
+                        alert('Incorrect register information.');
+                    } else {
+                        this.props.loadUser(user);
+                        this.props.onRouteChange('portfolio','signin');
+                    }
+                }
+            })
     }
 
     render(){
@@ -60,7 +59,6 @@ class Register extends React.Component {
                             onChange={this.onNameChange} placeholder='Todd Packer' required
                             className="pa2 input-reset ba bg-transparent hover-bg-black w-100" type="name" name="name"  id="name" />
                         </div>
-                        
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input 
@@ -87,6 +85,6 @@ class Register extends React.Component {
             </ article>
         );
     }
-
 }
+
 export default Register;

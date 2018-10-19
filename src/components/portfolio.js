@@ -7,6 +7,7 @@ class Portfolio extends React.Component {
             holdings:[]
         }
     }
+
     componentDidMount() {
         fetch('https://rocky-everglades-18419.herokuapp.com/portfolio', {
             method: 'post',
@@ -103,17 +104,4 @@ class Portfolio extends React.Component {
 
 }
 export default Portfolio;
-
-
-/*
-{this.state.holdings.map((user,i) => {
-    return(
-        <tr className="grow" key={i}>
-            <td className="pv3 pr3 bb b--black-20">{this.state.holdings[i].companyName}</td>
-            <td className="pv3 pr3 bb b--black-20">{this.state.holdings[i].symbol}</td>
-            <td className="pv3 pr3 bb b--black-20">{this.state.holdings[i].shares}</td>
-            <td className="pv3 pr3 bb b--black-20">{this.state.holdings[i].costPerShare}</td>
-            <td className="pv3 pr3 bb b--black-20">{(this.state.holdings[i].costPerShare)*(this.state.holdings[i].shares)}</td>
-        </tr>
-    );
-})}*/        
+    
