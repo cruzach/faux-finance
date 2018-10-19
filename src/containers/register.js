@@ -21,7 +21,7 @@ class Register extends React.Component {
     }
 
     onSubmitSignin = () => {
-        if(this.state.name.length === 0 || this.state.name.signInEmail === '' || this.state.signInPassword.length === 0){
+        if(this.state.name.length === 0 || this.state.signInEmail.length === 0 || this.state.signInPassword.length === 0){
             return alert('All input data is required.');
         }
         fetch('https://rocky-everglades-18419.herokuapp.com/register', {
