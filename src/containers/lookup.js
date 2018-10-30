@@ -28,22 +28,23 @@ class LookUp extends React.Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({results:data});
+                this.setState({ searchField: ''});
             })
             .catch(err=> this.setState({results:''}))
     }
     
 
     render(){
-        const { results } = this.state;
+        const { results, searchField } = this.state;
         
         if(results.length !== 0){
             const chartLabels = results.chart.map(each => each.label);
             const chartData = results.chart.map(each => each.vwap);
             return(
                 <div>
-                    <p className="tc f2 fw6 ph0 mh0">Stock Lookup</p>
-                    <div>
-                        <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter}/>
+                    <p className="tc f2 fw6 ph0 mh0 pt0">Stock Lookup</p>
+                    <div className="dib">
+                        <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter} value={searchField} />
                         <input 
                             type="submit" 
                             onClick={this.onLookup}
@@ -64,13 +65,13 @@ class LookUp extends React.Component {
             return(
                 <div>
                     <p className="tc f2 fw6 ph0 mh0">Stock Lookup</p>
-                    <div>
-                    <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter}/>
-                    <input 
-                        type="submit" 
-                        onClick={this.onLookup}
-                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                        value="Lookup" />
+                    <div className="dib">
+                        <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter} value={searchField}/>
+                        <input 
+                            type="submit" 
+                            onClick={this.onLookup}
+                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                            value="Lookup" />
                     </div>
                 </div>
             )
