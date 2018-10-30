@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBox = ({ searchChange}) => {
+const SearchBox = ({ searchChange , handleEnter}) => {
 
 return (
         <div className='pa2'>
@@ -8,7 +8,8 @@ return (
             className='pa3 ba'
             type='search' 
             placeholder='Symbol' 
-            onKeyPress={searchChange}
+            onChange={searchChange}
+            onKeyPress={handleEnter}
             />
         </div>
     );

@@ -7,20 +7,29 @@ class LookUp extends React.Component {
     constructor() {
         super();
         this.state = {
+            searchField:'',
             results: []
         }
     }
 
-    onSearchChange = (event) => {
-        if(event.key === 'Enter'){
-            fetch(`https://api.iextrading.com/1.0/stock/${event.target.value}/batch?types=quote,news,chart&range=1m&last=1`)
-                .then(response => response.json())
-                .then(data => {
-                    this.setState({results:data});
-                })
-                .catch(err=> this.setState({results:''}))
-            event.target.value = '';
+    handleEnter=(e) => {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if (keycode === 13) {
+            this.onLookup();
         }
+    }
+
+    onSearchChange = (event) => {
+        this.setState({ searchField: event.target.value});
+    }
+
+    onLookup = () => {
+        fetch(`https://api.iextrading.com/1.0/stock/${this.state.searchField}/batch?types=quote,news,chart&range=1m&last=1`)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({results:data});
+            })
+            .catch(err=> this.setState({results:''}))
     }
     
 
@@ -33,7 +42,14 @@ class LookUp extends React.Component {
             return(
                 <div>
                     <p className="tc f2 fw6 ph0 mh0">Stock Lookup</p>
-                    <SearchBox searchChange={this.onSearchChange}/>
+                    <div>
+                        <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter}/>
+                        <input 
+                            type="submit" 
+                            onClick={this.onLookup}
+                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                            value="Lookup" />
+                    </div>
                     <div className='flex center'>
                         <StockList className="w-30 w-10-ns" companies={results.quote}/>
                         <StockChart className="w-50 w-40-ns" chartLabels={chartLabels} chartData={chartData} />
@@ -48,7 +64,14 @@ class LookUp extends React.Component {
             return(
                 <div>
                     <p className="tc f2 fw6 ph0 mh0">Stock Lookup</p>
-                    <SearchBox searchChange={this.onSearchChange}/>
+                    <div>
+                    <SearchBox searchChange={this.onSearchChange} handleEnter={this.handleEnter}/>
+                    <input 
+                        type="submit" 
+                        onClick={this.onLookup}
+                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                        value="Lookup" />
+                    </div>
                 </div>
             )
         }
