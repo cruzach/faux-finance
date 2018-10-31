@@ -21,9 +21,14 @@ class Register extends React.Component {
     }
 
     onSubmitSignin = () => {
+        const pattern = /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         if(this.state.name.length === 0 || this.state.signInEmail.length === 0 || this.state.signInPassword.length === 0){
             return alert('All input data is required.');
         }
+        if(!pattern.test(this.state.signInEmail)){
+            return alert('Please input a valid email address.');
+        }
+
         fetch('https://rocky-everglades-18419.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},

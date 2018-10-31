@@ -14,30 +14,32 @@ class Trade extends React.Component {
 
     onConfirmTrade = (transactionType) => {
         if(this.state.shareCount%1 !== 0){
-            alert('ERROR: Shares purchased must be a whole number.')
-        }else {
-            fetch('https://rocky-everglades-18419.herokuapp.com/trade', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    id: this.props.user.id,
-                    transactionType: transactionType,
-                    symbol: this.state.results.symbol,
-                    shareCount: this.state.shareCount,
-                    costPerShare:this.state.results.latestPrice,
-                    cash: this.props.user.cash
-                })
-            })
-                .then(response => response.json())
-                    .then(user => {
-                        if (user.id) {
-                            this.props.loadUser(user);
-                            this.props.onRouteChange('portfolio');
-                        } else {
-                            alert(user);
-                        }
-                    })
+            return alert('ERROR: Shares purchased must be a whole number.')
         }
+        if(this.state.shareCount === 0 || this.state.results.length === 0){
+            return alert('ERROR: Please choose a valid stock and sharecount.')
+        }
+        fetch('https://rocky-everglades-18419.herokuapp.com/trade', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.props.user.id,
+                transactionType: transactionType,
+                symbol: this.state.results.symbol,
+                shareCount: this.state.shareCount,
+                costPerShare:this.state.results.latestPrice,
+                cash: this.props.user.cash
+            })
+        })
+            .then(response => response.json())
+                .then(user => {
+                    if (user.id) {
+                        this.props.loadUser(user);
+                        this.props.onRouteChange('portfolio');
+                    } else {
+                        alert(user);
+                    }
+                })
     }
 
     onSearchChange = (event) => {
@@ -91,10 +93,22 @@ class Trade extends React.Component {
                 }
                 <div className="flex flex-row tc center mt3 pt2">
                     <p className="f6 link dim br3 ph3 pv2 mb2 dib white bg-light-blue pointer mr3"
-                    onClick={() => {if (window.confirm(`Are you sure you want to BUY ${shareCount} shares of ${results.companyName} @ $${results.latestPrice} per share for a total of $${(results.latestPrice*shareCount).toFixed(2)}?`)) this.onConfirmTrade('BUY')}}
+                        onClick={() => { 
+                            if(shareCount>0 && results.companyName !== undefined){
+                                if (window.confirm(`Are you sure you want to BUY ${shareCount} shares of ${results.companyName} @ $${results.latestPrice} per share for a total of $${(results.latestPrice*shareCount).toFixed(2)}?`)) this.onConfirmTrade('BUY')
+                            }else {
+                                alert('Please provide input for all fields.');
+                            }
+                        }}
                      >Buy</p>
                     <p className="f6 link dim br3 ph3 pv2 mb2 dib white bg-light-blue pointer ml3" 
-                    onClick={() => {if (window.confirm(`Are you sure you want to SELL ${shareCount} shares of ${results.companyName} @ $${results.latestPrice} per share for a total of $${(results.latestPrice*shareCount).toFixed(2)}?`)) this.onConfirmTrade('SELL')}}
+                        onClick={() => { 
+                            if(shareCount>0 && results.companyName !== undefined){
+                                if (window.confirm(`Are you sure you want to SELL ${shareCount} shares of ${results.companyName} @ $${results.latestPrice} per share for a total of $${(results.latestPrice*shareCount).toFixed(2)}?`)) this.onConfirmTrade('SELL')
+                            }else {
+                                alert('Please provide input for all fields.');
+                            }
+                        }}
                     >Sell</p>
                 </div>
             </div>
